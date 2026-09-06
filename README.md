@@ -3,7 +3,7 @@
 Productized Data & Reporting Automation Service MVP by OMINDLAB.
 
 ## Stack
-Next.js 16 · TypeScript · Prisma 8 · PostgreSQL · Zod · OpenAI · Resend · Vercel Cron
+Next.js 16 · TypeScript · Prisma 7 · PostgreSQL · Zod · OpenAI · Resend · Vercel Cron
 
 ## Local
 ```bash
