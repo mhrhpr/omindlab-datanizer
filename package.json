@@ -1,1 +1,35 @@
-{"name":"omindlab-datanizer","version":"0.1.0"}
+{
+  "name": "omindlab-datanizer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "test": "vitest run",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "8.0.0",
+    "jose": "^6.1.0",
+    "lucide-react": "^0.468.0",
+    "dotenv": "^17.2.2",
+    "next": "16.3.3",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "prisma": "8.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.4"
+  },
+  "engines": {"node": ">=24.0.0"}
+}
