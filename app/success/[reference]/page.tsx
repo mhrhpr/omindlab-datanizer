@@ -1,0 +1,3 @@
+import Link from 'next/link'
+import {Shell} from '@/components/Shell'
+export default async function Success({params}:{params:Promise<{reference:string}>}){const {reference}=await params;return <Shell><main className="success"><div className="container"><div className="eyebrow">DataNizer</div><h1>درخواست شما دریافت شد.</h1><p className="muted">اطلاعات شما توسط تیم DataNizer بررسی می‌شود و در صورت نیاز برای روشن شدن جزئیات با شما تماس می‌گیریم.</p><div className="ref">{reference}</div><div className="actions" style={{justifyContent:'center'}}><Link className="btn btn-primary" href="/">بازگشت به سایت</Link></div></div></main></Shell>}

@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server'; import {cookies} from 'next/headers'; import {verifyAdmin} from '@/lib/security'; import {prisma} from '@/lib/prisma'
+export async function PATCH(req:Request,{params}:{params:Promise<{id:string}>}){if(!(await verifyAdmin((await cookies()).get('dn_admin')?.value))) return NextResponse.json({error:'Unauthorized'},{status:401}); const {id}=await params; const {status}=await req.json(); return NextResponse.json(await prisma.expert.update({where:{id},data:{status}}))}

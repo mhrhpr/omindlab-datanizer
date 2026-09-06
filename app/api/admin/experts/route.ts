@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server'; import {cookies} from 'next/headers'; import {verifyAdmin} from '@/lib/security'; import {prisma} from '@/lib/prisma'
+export async function GET(){if(!(await verifyAdmin((await cookies()).get('dn_admin')?.value))) return NextResponse.json({error:'Unauthorized'},{status:401}); return NextResponse.json(await prisma.expert.findMany({orderBy:{createdAt:'desc'}}))}
