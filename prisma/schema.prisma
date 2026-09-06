@@ -12,7 +12,6 @@ model User {
   passwordHash String
   role         String     @default("admin")
   createdAt    DateTime   @default(now())
-  leads        Lead[]
   notes        LeadNote[]
 }
 
@@ -52,47 +51,47 @@ model Lead {
 }
 
 model LeadDiagnosis {
-  id                   String   @id @default(cuid())
-  leadId               String   @unique
-  lead                 Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
-  problemCategory      String
-  problemSummary       String
-  solutionTypes        Json
-  estimatedComplexity  String
-  urgency              String
-  likelyServices       Json
-  missingInformation   Json
-  suggestedQuestions   Json
-  leadQuality          String
+  id                    String   @id @default(cuid())
+  leadId                String   @unique
+  lead                  Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  problemCategory       String
+  problemSummary        String
+  solutionTypes         Json
+  estimatedComplexity   String
+  urgency               String
+  likelyServices        Json
+  missingInformation    Json
+  suggestedQuestions    Json
+  leadQuality           String
   recommendedNextAction String
-  rawAiOutput          Json
+  rawAiOutput           Json
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 }
 
 model Expert {
-  id                String   @id @default(cuid())
-  name              String
-  email             String
-  phone             String?
-  linkedin          String?
-  primaryExpertise  String
+  id                 String   @id @default(cuid())
+  name               String
+  email              String
+  phone              String?
+  linkedin           String?
+  primaryExpertise   String
   secondaryExpertise String?
-  yearsExperience   Int
-  industries        Json
-  skills            Json
-  availability      String?
-  engagementTypes   Json
-  expectedRate      String?
-  portfolioUrl      String?
-  cvUrl             String?
-  description       String?
-  location          String?
-  remote            Boolean  @default(true)
-  status            String   @default("Pending")
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  matches           Match[]
+  yearsExperience    Int
+  industries         Json
+  skills             Json
+  availability       String?
+  engagementTypes    Json
+  expectedRate       String?
+  portfolioUrl       String?
+  cvUrl              String?
+  description        String?
+  location           String?
+  remote             Boolean  @default(true)
+  status             String   @default("Pending")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  matches            Match[]
 }
 
 model Match {
@@ -129,15 +128,15 @@ model LeadEvent {
 }
 
 model Deal {
-  id            String   @id @default(cuid())
-  leadId        String
-  lead          Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
-  value         Float
+  id             String   @id @default(cuid())
+  leadId         String
+  lead           Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  value          Float
   recurringValue Float?
-  status        String   @default("Open")
-  notes         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  status         String   @default("Open")
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model SeoPage {
@@ -153,12 +152,13 @@ model SeoPage {
 }
 
 model SeoRun {
-  id          String   @id @default(cuid())
-  status      String
-  startedAt   DateTime @default(now())
-  completedAt DateTime?
-  summary     String?
-  metrics     Json?
+  id              String               @id @default(cuid())
+  status          String
+  startedAt       DateTime             @default(now())
+  completedAt     DateTime?
+  summary         String?
+  metrics         Json?
+  recommendations SeoRecommendation[]
 }
 
 model SeoRecommendation {
