@@ -1,7 +1,12 @@
 import 'dotenv/config'
+import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
 import { createHash } from 'crypto'
-const prisma=new PrismaClient()
+
+const connectionString = process.env.DATABASE_URL
+if (!connectionString) throw new Error('DATABASE_URL is required')
+const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString }) })
+
 async function main(){
   const email=process.env.ADMIN_EMAIL||'admin@example.com'; const password=process.env.ADMIN_PASSWORD||'change-me'; const hash=createHash('sha256').update(password).digest('hex')
   await prisma.user.upsert({where:{email},update:{passwordHash:hash},create:{email,passwordHash:hash,role:'admin'}})
