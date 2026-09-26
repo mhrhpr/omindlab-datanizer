@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { getSeoPage } from '@/lib/seo'
 
-const sameAs=[process.env.NEXT_PUBLIC_CONTACT_TELEGRAM,process.env.NEXT_PUBLIC_CONTACT_BALE,process.env.NEXT_PUBLIC_CONTACT_RUBIKA,process.env.NEXT_PUBLIC_CONTACT_WHATSAPP].filter(Boolean) as string[]
+const sameAs=[process.env.NEXT_PUBLIC_CONTACT_TELEGRAM,process.env.NEXT_PUBLIC_CONTACT_BALE,process.env.NEXT_PUBLIC_CONTACT_RUBIKA,process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM,process.env.NEXT_PUBLIC_CONTACT_LINKEDIN,process.env.NEXT_PUBLIC_CONTACT_WHATSAPP].filter(Boolean) as string[]
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo=await getSeoPage('home')
