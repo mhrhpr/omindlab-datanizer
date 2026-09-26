@@ -1,88 +1,111 @@
 import Link from 'next/link'
 import { Shell } from '@/components/Shell'
 
-const services = [
-  {n:'01', title:'گزارش‌گیری خودکار', desc:'گزارش‌های هفتگی و ماهانه را از کار دستی خارج می‌کنیم و به یک جریان قابل اتکا تبدیل می‌کنیم.'},
-  {n:'02', title:'داشبورد مدیریتی', desc:'KPIهای مهم کسب‌وکار را در یک نمای شفاف و تصمیم‌محور جمع می‌کنیم.'},
-  {n:'03', title:'اتوماسیون Excel', desc:'فایل‌های تکراری، محاسبات و خروجی‌هایی که هر ماه دوباره ساخته می‌شوند را خودکار می‌کنیم.'},
-  {n:'04', title:'تجمیع داده', desc:'داده‌های پراکنده از Excel، CSV، Sheets و سیستم‌های مختلف را کنار هم می‌آوریم.'},
-  {n:'05', title:'سیستم‌های KPI', desc:'شاخص‌ها را از حالت گزارش تزئینی به ابزار واقعی برای مدیریت تبدیل می‌کنیم.'},
-  {n:'06', title:'اتوماسیون کسب‌وکار', desc:'فرآیندهای تکراری را ساده می‌کنیم؛ از Workflowهای کوچک تا سیستم‌های داده و AI.'},
+const deliverables = [
+  { n: '01', title: 'پاک‌سازی و یکسان‌سازی', text: 'نام کالا، کد، واحد، قیمت و ردیف‌های تکراری را مرتب می‌کنیم.' },
+  { n: '02', title: 'محاسبه قیمت فروش', text: 'قیمت خرید و منطق سود شما را به قیمت فروش قابل استفاده تبدیل می‌کنیم.' },
+  { n: '03', title: 'قیمت‌نامه آماده', text: 'خروجی Excel و PDF آماده استفاده، چاپ یا ارسال برای مشتری تحویل می‌گیرید.' },
+  { n: '04', title: 'آپدیت‌های بعدی', text: 'برای فایل‌های تکراری، به‌روزرسانی دوره‌ای را به یک سرویس ساده تبدیل می‌کنیم.' },
+]
+const industries = ['قطعات خودرو و لوازم یدکی', 'ابزار و تجهیزات صنعتی', 'مصالح و تجهیزات ساختمانی']
+const faqs = [
+  ['چه فایل‌هایی را می‌توانم بفرستم؟', 'Excel و CSV مناسب‌ترین فرمت‌ها هستند. اگر فایل شما از نرم‌افزار حسابداری یا سیستم دیگری خروجی می‌شود، بعد از بررسی فایل درباره فرمت مناسب به شما می‌گوییم.'],
+  ['آیا لازم است Excel بلد باشم؟', 'نه. شما فایل خام و نتیجه‌ای را که می‌خواهید توضیح می‌دهید؛ پردازش و آماده‌سازی خروجی با ماست.'],
+  ['قیمت سفارش چطور مشخص می‌شود؟', 'قیمت بر اساس حجم فایل، تعداد اقلام و منطق موردنیاز تعیین می‌شود. قبل از شروع، scope و قیمت برای شما مشخص خواهد شد.'],
+  ['چقدر زمان می‌برد؟', 'هدف سرویس تحویل سریع است. زمان دقیق بعد از دیدن حجم و پیچیدگی فایل اعلام می‌شود.'],
+  ['آیا فقط یک بار می‌توانم سفارش بدهم؟', 'بله. اما اگر هر هفته یا هر ماه فایل قیمت جدید دارید، همان workflow را می‌توانیم به سرویس تکرارشونده تبدیل کنیم.'],
 ]
 
-const work = [
-  {tag:'PRODUCT', title:'DataNizer', desc:'گزارش‌گیری و اتوماسیون داده به‌عنوان خدمت.', href:'/datanizer'},
-  {tag:'CASE STUDY', title:'HR Intelligence', desc:'از داده نیروی انسانی تا داشبورد و تصمیم مدیریتی.'},
-  {tag:'AUTOMATION', title:'ClinicFlow', desc:'یک Workflow عملیاتی کوچک که از یک نیاز واقعی متولد شد.'},
-  {tag:'R&D', title:'Mobility Intelligence', desc:'داده، API و تحلیل برای حمل‌ونقل و لجستیک.'},
-]
-
-export default function Home(){
-  return <Shell>
-    <main>
-      <section className="hero">
-        <div className="container hero-wrap">
-          <div className="hero-kicker"><span className="signal-dot"/> OMINDLAB / FOUNDED BY OMID</div>
-          <div className="hero-grid">
-            <div>
-              <h1>من با <em>داده</em> شروع می‌کنم؛<br/>با <em>سیستم</em> تمامش می‌کنم.</h1>
-              <p className="hero-copy">OmindLab یک استودیوی مستقل برای ساخت راه‌حل‌های Data، Automation و AI است. مسئله‌ی کسب‌وکار را می‌گیریم و آن را به گزارش، داشبورد، workflow یا محصول قابل استفاده تبدیل می‌کنیم.</p>
-              <div className="actions"><Link className="btn btn-dark" href="/datanizer">DataNizer را ببینید <span>↗</span></Link><Link className="btn btn-light" href="/request">مشکل‌تان را تعریف کنید</Link></div>
-              <div className="micro-proof"><span>بدون نیاز به دانش فنی</span><span>·</span><span>راه‌حل متناسب با مسئله</span></div>
-            </div>
-            <div className="hero-panel">
-              <div className="panel-top"><span>OMINDLAB / SYSTEM VIEW</span><span>01—04</span></div>
-              <div className="system-flow">
-                <div className="system-node muted-node"><small>INPUT</small><strong>Messy data</strong><span>Excel · CSV · ERP · Sheets</span></div>
-                <div className="connector"><i/></div>
-                <div className="system-node active-node"><small>PROCESS</small><strong>DataNizer</strong><span>Audit · Model · Automate</span></div>
-                <div className="connector"><i/></div>
-                <div className="system-node result-node"><small>OUTCOME</small><strong>Useful decisions</strong><span>Report · KPI · Workflow</span></div>
+export default function Home() {
+  return (
+    <Shell>
+      <main>
+        <section className="sales-hero">
+          <div className="container sales-hero-grid">
+            <div className="sales-copy">
+              <div className="eyebrow">DATANIZER / QUICKOPS</div>
+              <h1>فایل قیمتت را بفرست؛<br /><span>قیمت‌نامه آماده فروش</span> تحویل بگیر.</h1>
+              <p className="hero-sub">فایل قیمت تأمین‌کننده، Excel یا CSV شما را تمیز، یکسان و قابل استفاده می‌کنیم؛ قیمت فروش و حاشیه سود را هم طبق منطق شما آماده می‌کنیم.</p>
+              <div className="hero-actions">
+                <Link className="btn btn-primary btn-xl" href="/request?service=price-list">فایل و درخواست را ارسال کن <span>↗</span></Link>
+                <Link className="btn btn-ghost" href="#how">نحوه کار</Link>
               </div>
-              <div className="panel-footer"><span>Human-led. System-built.</span><span>↳</span></div>
+              <div className="trust-row"><span>بدون نصب نرم‌افزار</span><span>•</span><span>Excel / CSV</span><span>•</span><span>شروع با یک فایل</span></div>
+            </div>
+            <div className="price-card" aria-label="نمونه خروجی قیمت‌نامه">
+              <div className="price-card-top"><span>PRICE LIST / LIVE</span><span>01</span></div>
+              <div className="price-card-title">قیمت‌نامه فروش</div>
+              <div className="price-table">
+                <div className="price-row header"><span>کالا</span><span>خرید</span><span>فروش</span></div>
+                <div className="price-row"><span>فیلتر روغن</span><strong>۸۹۰</strong><b>۱,۰۹۰</b></div>
+                <div className="price-row"><span>لنت ترمز</span><strong>۱,۸۰۰</strong><b>۲,۲۹۰</b></div>
+                <div className="price-row"><span>شمع موتور</span><strong>۶۲۰</strong><b>۷۹۰</b></div>
+                <div className="price-row"><span>تسمه تایم</span><strong>۲,۹۰۰</strong><b>۳,۵۹۰</b></div>
+              </div>
+              <div className="price-note">خروجی نهایی: Excel + PDF / قیمت خرید + قیمت فروش + حاشیه سود</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section section-rule" id="story">
-        <div className="container two-col">
-          <div className="section-label">01 / THE IDEA</div>
-          <div>
-            <h2>از «تحلیل داده» به «ساختن سیستم».</h2>
-            <p className="lead">مسیر OmindLab از گزارش‌گیری و BI شروع شد؛ بعد به automation، API، data systems و در نهایت AI رسید. امروز تمرکز روی یک سؤال ساده است: <strong>کدام بخش از کار کسب‌وکار را می‌توان بهتر، سریع‌تر و قابل‌اعتمادتر کرد؟</strong></p>
-            <div className="story-line"><span>Data Analyst</span><span>→</span><span>BI</span><span>→</span><span>Automation</span><span>→</span><span>AI Systems</span></div>
+        <section className="proof-strip">
+          <div className="container proof-grid">
+            <div><strong>یک فایل</strong><span>برای شروع کافی است</span></div>
+            <div><strong>خروجی آماده</strong><span>برای فروش، چاپ یا ارسال</span></div>
+            <div><strong>قابل تکرار</strong><span>برای آپدیت‌های بعدی</span></div>
+            <div><strong>بدون ERP</strong><span>بدون تغییر نرم‌افزار فعلی</span></div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section dark-section">
-        <div className="container">
-          <div className="split-heading"><div><div className="section-label light">02 / NOW BUILDING</div><h2>یک مسئله واقعی<br/>بهتر از یک SaaS بزرگ است.</h2></div><p>به‌جای ساختن ابزار برای همه‌چیز، با یک مسئله شروع می‌کنیم، راه‌حل را می‌سازیم و از پروژه‌های واقعی یاد می‌گیریم.</p></div>
-          <div className="datanizer-feature">
-            <div><div className="pill">PRODUCT / SERVICE</div><h3>DataNizer</h3><p>گزارش‌های دستی، داده‌های پراکنده و workflowهای تکراری را به سیستم‌های ساده و قابل اتکا تبدیل می‌کند.</p><Link className="text-link" href="/datanizer">Explore DataNizer <span>↗</span></Link></div>
-            <div className="mini-journey"><div><b>01</b><span>Problem</span></div><div><b>02</b><span>Audit</span></div><div><b>03</b><span>Build</span></div><div><b>04</b><span>Outcome</span></div></div>
+        <section className="section" id="deliver">
+          <div className="container">
+            <div className="section-intro"><div className="eyebrow">WHAT YOU GET</div><h2>از فایل خام تا قیمت‌نامه قابل استفاده.</h2><p>تمرکز ما روی یک خروجی واضح است؛ نه آموزش نرم‌افزار و نه جلسه‌های طولانی.</p></div>
+            <div className="deliver-grid">{deliverables.map((item) => <article className="deliver-card" key={item.n}><span className="card-number">{item.n}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section" id="services">
-        <div className="container">
-          <div className="section-head"><div><div className="section-label">03 / SERVICES</div><h2>خدمت‌هایی که از مسئله شروع می‌شوند.</h2></div><p>مشتری تکنولوژی نمی‌خرد؛ زمان، دقت و visibility می‌خرد.</p></div>
-          <div className="service-grid">{services.map(s=><article className="service-card" key={s.n}><div className="service-n">{s.n}</div><h3>{s.title}</h3><p>{s.desc}</p><span className="service-arrow">↗</span></article>)}</div>
-        </div>
-      </section>
+        <section className="section dark-section" id="how">
+          <div className="container">
+            <div className="dark-heading">
+              <div><div className="eyebrow light">HOW IT WORKS</div><h2>سه قدم، نه یک پروژه بزرگ.</h2></div>
+              <p>کار را با همان فایل‌هایی که الان دارید شروع می‌کنیم.</p>
+            </div>
+            <div className="steps-grid">
+              <article><span>01</span><h3>فایل را بفرست</h3><p>Excel، CSV یا نمونه فایل فعلی‌تان را ارسال کنید و بگویید خروجی را برای چه کاری می‌خواهید.</p></article>
+              <article><span>02</span><h3>خروجی را تأیید کن</h3><p>فرمت و منطق قیمت‌گذاری را مشخص می‌کنیم تا خروجی دقیقاً با کار شما هماهنگ باشد.</p></article>
+              <article><span>03</span><h3>تحویل بگیر</h3><p>قیمت‌نامه آماده استفاده را تحویل می‌گیرید و در سفارش‌های بعدی workflow سریع‌تر می‌شود.</p></article>
+            </div>
+          </div>
+        </section>
 
-      <section className="section section-rule" id="work">
-        <div className="container">
-          <div className="section-head"><div><div className="section-label">04 / SELECTED WORK</div><h2>کارهایی که مسیر را نشان می‌دهند.</h2></div><p>هر پروژه یک آزمایش است برای نزدیک‌تر شدن به سیستم‌های بهتر.</p></div>
-          <div className="work-list">{work.map((w,i)=><Link className="work-row" href={w.href || '#'} key={w.title}><span className="work-index">0{i+1}</span><span className="work-main"><small>{w.tag}</small><strong>{w.title}</strong></span><span className="work-desc">{w.desc}</span><span className="work-arrow">↗</span></Link>)}</div>
-        </div>
-      </section>
+        <section className="section" id="for-whom">
+          <div className="container split-section">
+            <div><div className="eyebrow">BEST FIT</div><h2>برای کسب‌وکارهایی که قیمتشان مدام عوض می‌شود.</h2></div>
+            <div><p className="lead">بیشترین ارزش زمانی ایجاد می‌شود که کالاهای زیاد، چند تأمین‌کننده یا به‌روزرسانی‌های مکرر داشته باشید.</p><div className="industry-list">{industries.map((item, i) => <div key={item}><span>0{i + 1}</span><strong>{item}</strong></div>)}</div></div>
+          </div>
+        </section>
 
-      <section className="section cta-section">
-        <div className="container cta-box"><div><div className="section-label">05 / START HERE</div><h2>یک مشکل گزارش‌گیری، داده یا فرآیند دارید؟</h2><p>لازم نیست راه‌حل را بدانید. مسئله را توضیح دهید؛ از آنجا شروع می‌کنیم.</p></div><Link className="btn btn-dark btn-large" href="/request">مشکل‌تان را تعریف کنید <span>↗</span></Link></div>
-      </section>
-    </main>
-  </Shell>
+        <section className="section section-light" id="faq">
+          <div className="container faq-wrap">
+            <div><div className="eyebrow">FAQ</div><h2>سؤال‌های قبل از سفارش.</h2></div>
+            <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
+          </div>
+        </section>
+
+        <section className="cta-section">
+          <div className="container cta-card">
+            <div><div className="eyebrow light">START WITH ONE FILE</div><h2>فایل را بفرست؛ از همان نمونه شروع می‌کنیم.</h2><p>لازم نیست از قبل بدانید چه فرمول یا چه نرم‌افزاری لازم است.</p></div>
+            <Link className="btn btn-accent btn-xl" href="/request?service=price-list">ثبت درخواست <span>↗</span></Link>
+          </div>
+        </section>
+
+        <section className="seo-copy">
+          <div className="container">
+            <h2>خدمات ساخت و به‌روزرسانی قیمت‌نامه با Excel</h2>
+            <p>اگر قیمت‌های خرید شما از چند فایل مختلف می‌آیند یا هر بار قبل از فروش باید قیمت‌ها را دستی اصلاح کنید، DataNizer می‌تواند این کار را به یک خروجی استاندارد تبدیل کند. خدمات شامل پاک‌سازی فایل، تطبیق اقلام، محاسبه قیمت فروش و آماده‌سازی قیمت‌نامه Excel یا PDF است. برای سفارش‌های تکرارشونده، ساختار فایل شما به‌صورت ثابت نگه داشته می‌شود تا به‌روزرسانی‌های بعدی سریع‌تر انجام شوند.</p>
+            <p>این سرویس برای فروشگاه‌ها و شرکت‌های دارای کالای متنوع، پخش‌کنندگان، فروشندگان قطعات خودرو، ابزار و تجهیزات صنعتی و مصالح کاربرد دارد. هدف، حذف کار دستی و رساندن شما از «فایل خام تأمین‌کننده» به «قیمت‌نامه قابل استفاده» است.</p>
+          </div>
+        </section>
+      </main>
+    </Shell>
+  )
 }
