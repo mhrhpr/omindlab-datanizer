@@ -1,40 +1,36 @@
 import './globals.css'
+import type { Metadata, Viewport } from 'next'
+import { Vazirmatn } from 'next/font/google'
 import Script from 'next/script'
-import type { Metadata } from 'next'
 import { getSeoPage } from '@/lib/seo'
+
+const vazirmatn = Vazirmatn({ subsets: ['arabic'], display: 'swap', variable: '--font-vazirmatn' })
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoPage('home')
-  const base = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+  const base = process.env.NEXT_PUBLIC_APP_URL || 'https://datanizer.ir'
   return {
     metadataBase: new URL(base),
-    title: { default: seo.title, template: '%s | OMINDLAB' },
+    title: { default: seo.title, template: '%s | DataNizer' },
     description: seo.description,
     keywords: seo.keywords,
     alternates: { canonical: seo.canonical },
     robots: seo.robots,
-    openGraph: {
-      type: 'website',
-      locale: 'fa_IR',
-      siteName: 'OMINDLAB',
-      title: seo.title,
-      description: seo.description,
-      url: seo.canonical,
-      images: [{ url: seo.ogImage }],
-    },
-    twitter: { card: 'summary_large_image', title: seo.title, description: seo.description, images: [seo.ogImage] },
+    openGraph: { type: 'website', locale: 'fa_IR', siteName: 'DataNizer', title: seo.title, description: seo.description, url: seo.canonical, images: [{ url: '/opengraph-image' }] },
+    twitter: { card: 'summary_large_image', title: seo.title, description: seo.description, images: ['/opengraph-image'] },
   }
 }
 
-export default function RootLayout({children}:{children:React.ReactNode}){
-  const base = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#10110f', colorScheme: 'light' }
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const base = process.env.NEXT_PUBLIC_APP_URL || 'https://datanizer.ir'
   const jsonLd = {
-    '@context':'https://schema.org',
-    '@graph':[
-      { '@type':'Person', name:'Omid', url:base, jobTitle:'Data & AI Engineer', worksFor:{'@type':'Organization',name:'OMINDLAB',url:base} },
-      { '@type':'Organization', name:'OMINDLAB', url:base, description:'Data, automation and AI systems for business.' },
-      { '@type':'WebSite', name:'OMINDLAB', url:base, inLanguage:'fa-IR' },
-    ]
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'Organization', name: 'DataNizer', url: base, description: 'خدمات قیمت‌نامه، قیمت‌گذاری و اتوماسیون فایل برای کسب‌وکارها.' },
+      { '@type': 'WebSite', name: 'DataNizer', url: base, inLanguage: 'fa-IR' },
+    ],
   }
-  return <html lang="fa" dir="rtl"><body>{children}<Script id="omindlab-schema" type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}} /></body></html>
+  return <html lang="fa-IR" dir="rtl" className={vazirmatn.variable}><body>{children}<Script id="site-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /></body></html>
 }
